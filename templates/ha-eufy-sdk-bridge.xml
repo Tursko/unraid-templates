@@ -9,32 +9,35 @@
   <Privileged>false</Privileged>
 
   <!-- Optional but highly recommended: app icon -->
-  <Icon>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO/main/icon.png</Icon>
-
-  <!-- Optional theme-specific icon overrides -->
-  <!-- <Icon-black>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO/main/icon-black.png</Icon-black> -->
-  <!-- <Icon-white>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO/main/icon-white.png</Icon-white> -->
-  <!-- <Icon-azure>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO/main/icon-azure.png</Icon-azure> -->
-  <!-- <Icon-gray>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO/main/icon-gray.png</Icon-gray> -->
+  <Icon>https://raw.githubusercontent.com/Tursko/unraid-templates/refs/heads/main/templates/icons/ha-eufy-sdk-bridge.svg</Icon>
 
   <!-- Plain text description -->
-  <Overview>Explain what this container does and why users should install it.</Overview>
+  <Overview>Eufy SDK Bridge (mega-yfue) is a container that exposes the `eufy-sdk` to the frontend of your choice.
+  It was recently released alongside mega-yfue's SDK and Home Assistant addon as part of their Home Assistant integration. 
+
+  It ships with go2rtc bundled, so live camera video is available over RTSP, WebRTC, MSE or HLS with nothing else to install.
+
+  Note: This is a brand new SDK, built to replace eufy-security-ws.
+
+  Container tags: `:latest` & `:dev`
+  
+  </Overview>
 
   <!-- NOTE: Either Support or Project is REQUIRED -->
   <!-- Project page -->
   <Project>https://github.com/mega-yfue/ha-eufy-sdk-bridge</Project>
 
   <!-- Raw URL to this exact template file -->
-  <TemplateURL>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO/main/templates/example-app.xml</TemplateURL>
+  <!-- <TemplateURL>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO/main/templates/example-app.xml</TemplateURL> -->
 
   <!-- Readme first file -->
-  <ReadMe>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO/main/README.md</ReadMe>
+  <!-- <ReadMe>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO/main/README.md</ReadMe> -->
   
   <!-- Valid category entries can be generated from the Application Categorizer plugin available in Apps -->
   <Category>HomeAutomation</Category>
 
   <!-- Optional extra app search terms -->
-  <ExtraSearchTerms>example sample starter</ExtraSearchTerms>
+  <ExtraSearchTerms>eufy sdk home assistant security mega yfue</ExtraSearchTerms>
 
   <!-- Optional system requirements text -->
   <Requires>Internet access for first run</Requires>
