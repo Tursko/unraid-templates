@@ -43,8 +43,8 @@ Container tags: `:latest` and `:dev`</Overview>
     <TagDescription>Development branch</TagDescription>
   </Branch>
 
-  <Config Name="Container Port" Target="3000" Default="3000" Mode="tcp" Description="Container Port" Type="Port" Display="always" Required="true" Mask="false">3001</Config>
-  <Config Name="App Data Path" Target="/app/data" Default="/mnt/user/appdata/eufy-sdk-bridge" Mode="rw" Description="Config File Path" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/eufy-sdk-bridge</Config>
+  <Config Name="Container Port" Target="3000" Default="3000" Mode="tcp" Type="Port" Display="always" Required="true" Mask="false">3000</Config>
+  <Config Name="App Data Path" Target="/app/data" Default="/mnt/user/appdata/eufy-sdk-bridge" Mode="rw" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/eufy-sdk-bridge</Config>
 
   <Config Name="EUFY_EMAIL" Target="EUFY_EMAIL" Default="" Description="Eufy Account Email" Type="Variable" Display="always" Required="true" Mask="false"/>
   <Config Name="EUFY_PASSWORD" Target="EUFY_PASSWORD" Default="" Description="Eufy Account Password" Type="Variable" Display="always" Required="true" Mask="true"/>
