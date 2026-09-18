@@ -1,78 +1,37 @@
 <Container version="2">
-  <!-- Delete this file if your repository does not ship Docker apps. -->
-  <Name>Eufy-Bridge</Name>
+  <Name>eufy-sdk-bridge</Name>
   <Repository>ghcr.io/mega-yfue/ha-eufy-sdk-bridge:latest</Repository>
-  <Registry>https://github.com/mega-yfue/ha-eufy-sdk-bridge</Registry>
+  <Registry>https://github.com/mega-yfue/ha-eufy-sdk-bridge/pkgs/container/ha-eufy-sdk-bridge</Registry>
   <Network>bridge</Network>
 
   <Shell>bash</Shell>
   <Privileged>false</Privileged>
 
-  <!-- Optional but highly recommended: app icon -->
   <Icon>https://raw.githubusercontent.com/Tursko/unraid-templates/refs/heads/main/templates/icons/ha-eufy-sdk-bridge.svg</Icon>
 
-  <!-- Plain text description -->
-  <Overview>Eufy SDK Bridge (mega-yfue) is a container that exposes the `eufy-sdk` to the frontend of your choice.
-  It was recently released alongside mega-yfue's SDK and Home Assistant addon as part of their Home Assistant integration. 
+  <Overview>Eufy SDK Bridge (mega-yfue) is a container that exposes the `eufy-sdk` to the frontend of your choice. It was released alongside mega-yfue's SDK and Home Assistant addon as part of their Home Assistant integration.
 
-  It ships with go2rtc bundled, so live camera video is available over RTSP, WebRTC, MSE or HLS with nothing else to install.
+It ships with go2rtc bundled, so live camera video is available over RTSP, WebRTC, MSE, or HLS with nothing else to install.
 
-  Note: This is a brand new SDK, built to replace eufy-security-ws.
+Note: This is a brand new SDK, built to replace eufy-security-ws. There will be bugs.
 
-  Container tags: `:latest` and `:dev`
-  
-  </Overview>
+Container tags: `:latest` and `:dev`</Overview>
 
-  <!-- NOTE: Either Support or Project is REQUIRED -->
-  <!-- Project page -->
   <Project>https://github.com/mega-yfue/ha-eufy-sdk-bridge</Project>
+  <ReadMe>https://raw.githubusercontent.com/mega-yfue/ha-eufy-sdk-bridge/main/README.md</ReadMe>
 
-  <!-- Raw URL to this exact template file -->
-  <!-- <TemplateURL>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO/main/templates/example-app.xml</TemplateURL> -->
+  <WebUI>http://[IP]:[PORT:3000]/</WebUI>
 
-  <!-- Readme first file -->
-  <!-- <ReadMe>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO/main/README.md</ReadMe> -->
-  
-  <!-- Valid category entries can be generated from the Application Categorizer plugin available in Apps -->
   <Category>HomeAutomation</Category>
-
-  <!-- Optional extra app search terms -->
   <ExtraSearchTerms>eufy sdk home assistant security mega yfue</ExtraSearchTerms>
-
-  <!-- Optional system requirements text -->
   <Requires>Internet access for first run</Requires>
-
-  <!-- Optional changelog text -->
   <Changes>Initial release</Changes>
+  <Date>2026-09-18</Date>
 
-  <!-- Optional date (YYYY-MM-DD or YYYY-MM-DD HH:MM:SS) -->
-  <Date>2026-01-01</Date>
-  
-  <!-- Optional: set to true if this is a beta container -->
-  <!-- <Beta>true</Beta> -->
-
-  <!-- Minimum and maximum Unraid version.-->
   <MinVer>6.1</MinVer>
   <MaxVer>7.3</MaxVer>
 
-  <!-- Optionally set this if this container is deprecated for all OS versions -->
-  <!-- <Deprecated>true</Deprecated> -->
-
-  <!-- Optional: deprecate starting with a specific OS version -->
-  <!-- <DeprecatedMaxVer>7.2</DeprecatedMaxVer> -->
-
-  <!-- License of the container-->
   <License>MIT</License>
-
-  <!-- Screenshots -->
-  <!-- You can add multiple screenshots by adding multiple <Screenshot> tags -->
-  <!-- <Screenshot>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_PLUGIN_REPO/main/screenshot.png</Screenshot> -->
-  
-  <!-- Video. YouTube URLs are highly recommended -->
-  <!-- You can add multiple videos by adding multiple <Video> tags -->
-  <!-- <Video>https://www.youtube.com/watch?v=YOUR_YOUTUBE_VIDEO_ID</Video> -->
-
-  <!-- Optional release branch selectors -->
 
   <DefaultTagDescription>Stable releases</DefaultTagDescription>
   <Branch>
@@ -84,12 +43,10 @@
     <TagDescription>Development branch</TagDescription>
   </Branch>
 
-
-  <!-- v2 templates should define ports/paths/variables with Config entries -->
-  <Config Name="WebUI" Target="8080" Default="8080" Mode="tcp" Description="HTTP port for the WebUI." Type="Port" Display="always" Required="true" Mask="false"/>
-  <Config Name="Appdata" Target="/config" Default="/mnt/user/appdata/eufy-sdk-bridge" Mode="rw" Description="Persistent config files." Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="Container Port" Target="3000" Default="3000" Mode="tcp" Description="Container Port" Type="Port" Display="always" Required="true" Mask="false">3001</Config>
+  <Config Name="App Data Path" Target="/app/data" Default="/mnt/user/appdata/eufy-sdk-bridge" Mode="rw" Description="Config File Path" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/eufy-sdk-bridge</Config>
 
   <Config Name="EUFY_EMAIL" Target="EUFY_EMAIL" Default="" Description="Eufy Account Email" Type="Variable" Display="always" Required="true" Mask="false"/>
   <Config Name="EUFY_PASSWORD" Target="EUFY_PASSWORD" Default="" Description="Eufy Account Password" Type="Variable" Display="always" Required="true" Mask="true"/>
-  <Config Name="EUFY_COUNTRY" Target="EUFY_COUNTRY" Default="US" Description="Country code (default: US)" Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="EUFY_COUNTRY" Target="EUFY_COUNTRY" Default="US" Description="Country code (default: US)" Type="Variable" Display="always" Required="true" Mask="false">US</Config>
 </Container>
