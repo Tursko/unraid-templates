@@ -4,7 +4,7 @@
   <Registry>https://github.com/mega-yfue/ha-eufy-sdk-bridge/pkgs/container/ha-eufy-sdk-bridge</Registry>
   <Network>bridge</Network>
 
-  <Shell>bash</Shell>
+  <Shell>sh</Shell>
   <Privileged>false</Privileged>
 
   <Icon>https://raw.githubusercontent.com/Tursko/unraid-templates/refs/heads/main/templates/icons/ha-eufy-sdk-bridge.svg</Icon>
