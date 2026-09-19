@@ -11,11 +11,12 @@
 
   <Overview>Eufy SDK Bridge (mega-yfue) is a container that exposes the `eufy-sdk` to the frontend of your choice. It was released alongside mega-yfue's SDK and Home Assistant addon as part of their Home Assistant integration.
 
-It ships with go2rtc bundled, so live camera video is available over RTSP, WebRTC, MSE, or HLS with nothing else to install.
+  It ships with go2rtc bundled, so live camera video is available over RTSP, WebRTC, MSE, or HLS with nothing else to install.
 
-Note: This is a brand new SDK, built to replace eufy-security-ws. There will be bugs.
+  Note: This is a brand new SDK, built to replace eufy-security-ws. There will be bugs. 
 
-Container tags: `:latest` and `:dev`</Overview>
+  Container tags: `:latest` and `:dev`.
+  </Overview>
 
   <Project>https://github.com/mega-yfue/ha-eufy-sdk-bridge</Project>
   <ReadMe>https://raw.githubusercontent.com/mega-yfue/ha-eufy-sdk-bridge/main/README.md</ReadMe>
@@ -48,4 +49,6 @@ Container tags: `:latest` and `:dev`</Overview>
   <Config Name="EUFY_EMAIL" Target="EUFY_EMAIL" Default="" Description="Eufy Account Email" Type="Variable" Display="always" Required="true" Mask="false"/>
   <Config Name="EUFY_PASSWORD" Target="EUFY_PASSWORD" Default="" Description="Eufy Account Password" Type="Variable" Display="always" Required="true" Mask="true"/>
   <Config Name="EUFY_COUNTRY" Target="EUFY_COUNTRY" Default="US" Description="Country code (default: US)" Type="Variable" Display="always" Required="true" Mask="false">US</Config>
+  <Config Name="STREAM_IDLE_MS" Target="STREAM_IDLE_MS" Default="300000" Description="Auto-off a camera's live stream after this many `ms` with no detection event (motion/person/…). Helps save battery. Default is 300000ms (5 min)." Type="Variable" Display="advanced" Required="true" Mask="false">300000</Config>
+  <Config Name="RTSP_IDLE_OFF_MS" Target="RTSP_IDLE_OFF_MS" Default="300000" Description="Turn the device's native RTSP publish (rtspStream) OFF on a BATTERY camera left idle. Default is 300000ms (5 min)." Type="Variable" Display="advanced" Required="true" Mask="false">300000</Config>
 </Container>
