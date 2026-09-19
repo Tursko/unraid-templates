@@ -44,7 +44,7 @@
   </Branch>
 
   <Config Name="Host Port" Target="3000" Default="3000" Description="Host Port" Mode="tcp" Type="Port" Display="always" Required="true" Mask="false">3000</Config>
-  <Config Name="Host Path" Target="/app/data" Default="/mnt/user/appdata/eufy-sdk-bridge" Description="Host Path" Mode="rw" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/eufy-sdk-bridge</Config>
+  <Config Name="Host Path" Target="/app/data" Default="/mnt/user/appdata/eufy-sdk-bridge" Description="The path where the configuration file will be stored." Mode="rw" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/eufy-sdk-bridge</Config>
 
   <Config Name="EUFY_EMAIL" Target="EUFY_EMAIL" Default="" Description="Eufy Account Email" Type="Variable" Display="always" Required="true" Mask="false"/>
   <Config Name="EUFY_PASSWORD" Target="EUFY_PASSWORD" Default="" Description="Eufy Account Password" Type="Variable" Display="always" Required="true" Mask="true"/>
