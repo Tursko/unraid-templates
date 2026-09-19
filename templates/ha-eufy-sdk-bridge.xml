@@ -13,7 +13,7 @@
 
   It ships with go2rtc bundled, so live camera video is available over RTSP, WebRTC, MSE, or HLS with nothing else to install.
 
-  Note: This is a brand new SDK, built to replace eufy-security-ws. There will be bugs. 
+  Note: This is a brand new SDK, built to replace eufy-security-ws.
 
   Container tags: `:latest` and `:dev`.
   </Overview>
