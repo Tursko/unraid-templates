@@ -7,7 +7,7 @@
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
 
-  <Icon>https://raw.githubusercontent.com/Tursko/unraid-templates/refs/heads/main/templates/icons/ha-eufy-sdk-bridge.svg</Icon>
+  <Icon>https://raw.githubusercontent.com/Tursko/unraid-templates/refs/heads/main/templates/icons/ha-eufy-sdk-bridge.png</Icon>
 
   <Overview>Eufy SDK Bridge (mega-yfue) is a container that exposes the `eufy-sdk` to the frontend of your choice. It was released alongside mega-yfue's SDK and Home Assistant addon as part of their Home Assistant integration.
 
@@ -32,11 +32,6 @@
 
   <License>MIT</License>
 
-  <DefaultTagDescription>Stable releases</DefaultTagDescription>
-  <Branch>
-    <Tag>latest</Tag>
-    <TagDescription>Latest stable release</TagDescription>
-  </Branch>
   <Branch>
     <Tag>dev</Tag>
     <TagDescription>Development branch</TagDescription>
