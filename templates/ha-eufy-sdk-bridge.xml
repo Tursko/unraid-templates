@@ -2,7 +2,8 @@
   <Name>eufy-sdk-bridge</Name>
   <Repository>ghcr.io/mega-yfue/ha-eufy-sdk-bridge:latest</Repository>
   <Registry>https://github.com/mega-yfue/ha-eufy-sdk-bridge/pkgs/container/ha-eufy-sdk-bridge</Registry>
-  <Network>bridge</Network>
+  <!-- Host networking is the default: go2rtc needs 1984, 8554 and 8555 reachable, and WebRTC (UDP/ICE) works without extra setup. -->
+  <Network>host</Network>
 
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
@@ -16,6 +17,16 @@
   Note: This is a brand new SDK, built to replace eufy-security-ws.
 
   Container tags: `:latest` and `:dev`.
+
+  Default ports:
+  - 3000 (TCP): bridge control (WebSocket API, video feed, snapshots). Clients connect to this port.
+  - 1984 (TCP): go2rtc API and web UI, useful for testing streams.
+  - 8554 (TCP): go2rtc RTSP. Clients pull live video from this port.
+  - 8555 (TCP and UDP): go2rtc WebRTC.
+
+  Network modes:
+  - Host (default, recommended): all four ports bind directly on your server. Change the control port with Bridge Port; Host Port and the go2rtc port fields are ignored. Make sure nothing else on the server already uses 1984, 8554, or 8555.
+  - Bridge: choose the control port with Host Port. If you change Bridge Port, also change Host Port's container port to match; otherwise leave Bridge Port at 3000. Keep the RTSP Port mapping at 8554 or live video will fail with "connection refused". The go2rtc UI/API port can be remapped freely. The WebRTC ports should stay at 8555, and are only needed if you use the bridge's go2rtc for WebRTC directly.
   </Overview>
 
   <Project>https://github.com/mega-yfue/ha-eufy-sdk-bridge</Project>
@@ -24,8 +35,18 @@
 
   <Category>HomeAutomation</Category>
   <ExtraSearchTerms>eufy sdk home assistant security mega yfue</ExtraSearchTerms>
-  <Changes>Initial release</Changes>
-  <Date>2026-09-18</Date>
+  <Changes>
+### 2026-10-28
+- Default network changed to Host.
+- Added Bridge Port (BRIDGE_PORT) variable.
+- Added optional go2rtc port mappings (RTSP, UI/API, WebRTC) for Bridge mode.
+- Host Port is now optional; port descriptions explain which applies in each network mode.
+- Overview lists default ports and network mode requirements.
+
+### 2026-09-18
+- Initial release
+  </Changes>
+  <Date>2026-10-28</Date>
 
   <MinVer>6.1</MinVer>
   <!-- <MaxVer>7.3</MaxVer> -->
@@ -37,7 +58,15 @@
     <TagDescription>Development branch</TagDescription>
   </Branch>
 
-  <Config Name="Host Port" Target="3000" Default="3000" Description="Host Port" Mode="tcp" Type="Port" Display="always" Required="true" Mask="false">3000</Config>
+  <!-- Only applies with Bridge networking. Unraid ignores port mappings in Host mode. -->
+  <Config Name="Host Port" Target="3000" Default="3000" Description="Host port mapped to the bridge's control port (container port 3000). Only used with Bridge networking; ignored in Host mode, where Bridge Port sets the port instead." Mode="tcp" Type="Port" Display="always" Required="false" Mask="false">3000</Config>
+  <!-- Sets the port the bridge listens on. In Bridge mode it must match the Host Port's container port. -->
+  <Config Name="Bridge Port" Target="BRIDGE_PORT" Default="3000" Description="Port the bridge listens on for control, video, and snapshots. In Host mode, this is the port clients connect to. In Bridge mode, it must match the Host Port's container port (3000 by default), so it's simplest to leave it at 3000 and change Host Port instead." Type="Variable" Display="always" Required="true" Mask="false">3000</Config>
+  <!-- go2rtc ports. Only apply with Bridge networking; Host mode binds them directly on the server. -->
+  <Config Name="RTSP Port" Target="8554" Default="8554" Description="go2rtc RTSP. Clients pull live video from this port. Only used with Bridge networking. Keep the host port at 8554, since clients connect to 8554." Mode="tcp" Type="Port" Display="always" Required="false" Mask="false">8554</Config>
+  <Config Name="go2rtc UI/API Port" Target="1984" Default="1984" Description="go2rtc web UI and API, useful for testing streams. Only used with Bridge networking. The host port can be changed freely." Mode="tcp" Type="Port" Display="advanced" Required="false" Mask="false">1984</Config>
+  <Config Name="WebRTC Port (TCP)" Target="8555" Default="8555" Description="go2rtc WebRTC over TCP. Only used with Bridge networking, and only needed if you use the bridge's go2rtc for WebRTC directly. Keep the host port at 8555; WebRTC breaks if it is remapped." Mode="tcp" Type="Port" Display="advanced" Required="false" Mask="false">8555</Config>
+  <Config Name="WebRTC Port (UDP)" Target="8555" Default="8555" Description="go2rtc WebRTC over UDP. Only used with Bridge networking, and only needed if you use the bridge's go2rtc for WebRTC directly. Keep the host port at 8555; WebRTC breaks if it is remapped." Mode="udp" Type="Port" Display="advanced" Required="false" Mask="false">8555</Config>
   <Config Name="Host Path" Target="/app/data" Default="/mnt/user/appdata/eufy-sdk-bridge" Description="The path where the configuration file will be stored." Mode="rw" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/eufy-sdk-bridge</Config>
 
   <Config Name="EUFY_EMAIL" Target="EUFY_EMAIL" Default="" Description="Eufy Account Email" Type="Variable" Display="always" Required="true" Mask="false"/>
