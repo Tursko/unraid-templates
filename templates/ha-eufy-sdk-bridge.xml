@@ -1,4 +1,3 @@
-<?xml version="1.0"?>
 <Container version="2">
   <Name>eufy-sdk-bridge</Name>
   <Repository>ghcr.io/mega-yfue/ha-eufy-sdk-bridge:latest</Repository>
